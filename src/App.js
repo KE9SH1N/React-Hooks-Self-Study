@@ -1,23 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import Todo from "./Components/Todo";
+import PrevState from "./Components/PrevState";
+import Effect from "./Components/Effect";
+
+import { useState } from "react";
+import Callback from "./Components/Callback";
+import Ref from "./Components/Ref";
+import Reducer from "./Components/Reducer";
 
 function App() {
+
+  const [show, setShow] = useState(true);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+    <div>
+      <Todo/>
+      <PrevState/>
+      <div>{show && <Effect/>}</div>
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+        <button type="button" onClick={()=>setShow((prevShow)=>!prevShow)}>
+          {show ? 'Hide Post': 'Show Post'}
+        </button>
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+        <Callback/>
+
+        <Ref/>
+        <Reducer/>
     </div>
   );
 }
